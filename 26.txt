@@ -1,0 +1,9 @@
+//26
+//27
+//28
+//29
+26)Frequency of a given string which has count 5.
+
+
+
+

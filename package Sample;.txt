@@ -1,0 +1,91 @@
+package Sample;
+package Sample;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class Student {
+	@Id
+	@GeneratedValue
+	private int id;
+	private String name;
+	private String address;
+	private long number;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public long getNumber() {
+		return number;
+	}
+
+	public void setNumber(long number) {
+		this.number = number;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", name=" + name + ", address=" + address + ", number=" + number + "]";
+	}
+
+}
+------------------------------------------------------------------------------------------------------------------------
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
+public class MainClass {
+	public static void main(String[] args) {
+		EntityManagerFactory f = Persistence.createEntityManagerFactory("dev");
+		EntityManager e = f.createEntityManager();
+		EntityTransaction t = e.getTransaction();
+
+//		Student s = new Student();
+//		s.setNumber(788551245l);
+//		s.setAddress("beng");
+//		s.setName("ram");
+//		t.begin();
+//		e.persist(s);
+//		t.commit();
+
+//		Student s = e.find(Student.class, 5);
+//		System.out.println(s);
+
+//		Student s = e.find(Student.class, 1);
+//		t.begin();
+//		e.remove(s);
+//		t.commit();
+
+		Student a = e.find(Student.class, 2);
+		a.setAddress("tumkur");
+		t.begin();
+		e.merge(a);
+		t.commit();
+
+	}
+}
